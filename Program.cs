@@ -8,10 +8,10 @@
 // 7 4 2 1
 // 9 5 3 2
 // 8 4 4 2
-int[,] array = GetArray(4, 4, 0, 5);
-PrintArr(array);
-Console.WriteLine();
-PrintArrSort(array);
+// int[,] array = GetArray(4, 4, 0, 5);
+// PrintArr(array);
+// Console.WriteLine();
+// PrintArrSort(array);
 int[,] GetArray(int n, int m, int min, int max)
 {
     int[,] arr = new int[n, m];
@@ -41,23 +41,23 @@ void PrintArrSort(int[,] arr)
 {
     int temp = 0;
     for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            for (int k = j + 1; k < arr.GetLength(1); k++)
             {
-                for (int j = 0; j < arr.GetLength(1); j++)
+                if (arr[i, j] < arr[i, k])
                 {
-                    for (int k = j + 1; k < arr.GetLength(1); k++)
-                    {
-                        if (arr[i, j] < arr[i, k])
-                        {
-                            temp = arr[i, j];
-                            arr[i, j] = arr[i, k];
-                            arr[i, k] = temp;
-                        }
-                    }
+                    temp = arr[i, j];
+                    arr[i, j] = arr[i, k];
+                    arr[i, k] = temp;
                 }
             }
-        
+        }
+    }
 
-        for (int i = 0; i < arr.GetLength(0); i++)
+
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
@@ -74,6 +74,33 @@ void PrintArrSort(int[,] arr)
 // 8 4 2 4
 // 5 2 6 7
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+int[,] array = GetArray(4, 3, 0, 5);
+PrintArr(array);
+Console.WriteLine();
+Console.WriteLine($"Минимальная сумма чисел в {PrintArrSumm(array)} строке");
+
+int PrintArrSumm(int[,] arr)
+{
+    int summ = 0;
+    int temp = int.MaxValue;
+    int k = 0;
+    int[] array = new int[arr.GetLength(1)];
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        summ = 0;
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            summ = summ + arr[i, j];
+        }
+        Console.WriteLine($"Сумма {i} строки равна {summ}");
+        if (temp > summ)
+        {
+            temp = summ;
+            k = i;
+        }
+    }
+    return k;
+}
 
 
 // Задача 58: Задайте две квадратные матрицы. Напишите программу, которая будет находить произведение двух матриц.
