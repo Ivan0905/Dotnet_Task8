@@ -74,10 +74,10 @@ void PrintArrSort(int[,] arr)
 // 8 4 2 4
 // 5 2 6 7
 // Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
-int[,] array = GetArray(4, 3, 0, 5);
-PrintArr(array);
-Console.WriteLine();
-Console.WriteLine($"Минимальная сумма чисел в {PrintArrSumm(array)} строке");
+// int[,] array = GetArray(4, 3, 0, 5);
+// PrintArr(array);
+// Console.WriteLine();
+// Console.WriteLine($"Минимальная сумма чисел в {PrintArrSumm(array)} строке");
 
 int PrintArrSumm(int[,] arr)
 {
@@ -102,7 +102,6 @@ int PrintArrSumm(int[,] arr)
     return k;
 }
 
-
 // Задача 58: Задайте две квадратные матрицы. Напишите программу, которая будет находить произведение двух матриц.
 // Например, даны 2 матрицы:
 // 2 4 | 3 4
@@ -110,7 +109,29 @@ int PrintArrSumm(int[,] arr)
 // Результирующая матрица будет:
 // 18 20
 // 15 18
+int[,] array = GetArray(2, 2, 0, 5);
+int[,] array2 = GetArray(2, 2, 0, 5);
+PrintArr(array);
+Console.WriteLine();
+PrintArr(array2);
+Console.WriteLine();
+PrintArr(Matrix(array,array2));
 
 
+int[,] Matrix(int[,] arr1, int[,] arr2)
+{
+    int[,] myarray = new int[arr1.GetLength(0), arr2.GetLength(1)];
+    for (int i = 0; i < arr1.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr2.GetLength(1); j++)
+        {
+            for (int k = 0; k < arr1.GetLength(1); k++)
+            {
+                myarray[i, j] += arr1[i, k] * arr2[k, j];
+            }
+        }
+    }
+    return myarray;
+}
 // Рекомендовано решить(задача с семинара)
 // Отсортировать нечетные столбцы(смотрите по индексам) массива по возрастанию. Вывести массив изначальный и массив с отсортированными нечетными столбцами
