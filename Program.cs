@@ -109,13 +109,13 @@ int PrintArrSumm(int[,] arr)
 // Результирующая матрица будет:
 // 18 20
 // 15 18
-int[,] array = GetArray(2, 2, 0, 5);
-int[,] array2 = GetArray(2, 2, 0, 5);
-PrintArr(array);
-Console.WriteLine();
-PrintArr(array2);
-Console.WriteLine();
-PrintArr(Matrix(array,array2));
+// int[,] array = GetArray(2, 2, 0, 5);
+// int[,] array2 = GetArray(2, 2, 0, 5);
+// PrintArr(array);
+// Console.WriteLine();
+// PrintArr(array2);
+// Console.WriteLine();
+// PrintArr(Matrix(array,array2));
 
 
 int[,] Matrix(int[,] arr1, int[,] arr2)
@@ -133,5 +133,3 @@ int[,] Matrix(int[,] arr1, int[,] arr2)
     }
     return myarray;
 }
-// Рекомендовано решить(задача с семинара)
-// Отсортировать нечетные столбцы(смотрите по индексам) массива по возрастанию. Вывести массив изначальный и массив с отсортированными нечетными столбцами
